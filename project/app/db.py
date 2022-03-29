@@ -1,23 +1,21 @@
 import logging
 import os
-    
+
 from fastapi import FastAPI
 from tortoise import Tortoise, run_async
 from tortoise.contrib.fastapi import register_tortoise
-
 
 log = logging.getLogger("uvicorn")
 
 
 TORTOISE_ORM = {
-    "connections":{"default": os.environ.get("DATABASE_URL")},
+    "connections": {"default": os.environ.get("DATABASE_URL")},
     "apps": {
         "models": {
             "models": ["app.models.tortoise", "aerich.models"],
             "default_connection": "default",
         },
     },
-
 }
 
 
